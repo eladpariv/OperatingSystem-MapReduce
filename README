@@ -1,0 +1,14 @@
+Performance is the major motivation for multi-threaded programming. Multiple processors can execute multiple threads at the same time and do the same amount of computations in less time than it will take a single processor.
+Two challenges complicate multi-threaded programming:
+
+1. In many cases it is difficult to split the big task into small parts that can run in parallel.
+2. Running in multiple threads requires synchronisation and communication between threads. This introduces an overhead which without careful design can increase the total runtime significantly.
+
+Over the years, several designs were proposed in order to solve these challenges. In this exercise we implemented one of these designs, named MapReduce.
+MapReduce is used to parallelise tasks of a specific structure. Such tasks are defined by two functions, map and reduce, used as follows:
+
+1. The input is given as a sequence of elements.
+2. (Map phase) The map function is applied to each input element, producing a sequence of intermediary elements.
+3. (Sort/Shuffle phases) The intermediary elements are sorted into new sequences (more on this later).
+4. (Reduce phase) The reduce function is applied to each of the sorted sequences of intermediary elements, producing a sequence of output elements.
+5. The output is a concatenation of all sequences of output elements.
